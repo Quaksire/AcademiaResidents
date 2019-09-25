@@ -40,10 +40,21 @@ var s1a_hoverBackgroundColor = [
 	"#819ca9"
 ];
 
+// Line chart border width
+var border_width = 2;
+
+var total_background_color =  [ 'rgba(105, 0, 132, .2)' ];
+var total_border_color =  ['rgba(200, 99, 132, .7)'];
+
+var estimated_background_color =  [ 'rgba(0, 137, 132, .2)' ];
+var estimated_border_color =  [ 'rgba(0, 10, 130, .7)' ];
+
+var labels = ["2016", "2017", "2018", "2019", "2020"];
+
 // ===========================================
 // Functions
 // ===========================================
-fun createPieChart(chart, data) {
+function createPieChart(chart, data) {
 	new Chart(chart, {
 		type: 'pie',
 		data: {
@@ -59,6 +70,32 @@ fun createPieChart(chart, data) {
 		}
 	});	
 };
+
+function  createLineChart(chart, estimated_data, total_data) {
+	new Chart(chart, {
+		type: 'line',
+		data: {
+			labels: labels,
+			datasets: [
+			{
+				label: "Total",
+				data: total_data,
+				backgroundColor: total_background_color,
+				borderColor: total_border_color,
+				borderWidth: border_width
+			},
+			{
+				label: "Estimated",
+				data: estimated_data,
+				backgroundColor: estimated_background_color,
+				borderColor: estimated_border_color,
+				borderWidth: border_width
+			}
+			]
+		},
+		options: { responsive: true }
+	});
+}
 
 
 
@@ -86,40 +123,17 @@ createPieChart(s1a_2018_end_year,[826, 24, 1288, 6724, 3467, 1150, 26943, 4857, 
 createPieChart(s1a_2017_end_year, [706, 23, 1259, 8659, 2274, 700, 25660, 4857, 755]);
 createPieChart(s1a_2016_end_year, [826, 38, 1219, 6573, 2896, 199, 24913, 4626, 604]);
 
-
-
-
 //line
-var border_width = 2;
-
-var total_background_color =  [ 'rgba(105, 0, 132, .2)' ];
-var total_border_color =  ['rgba(200, 99, 132, .7)'];
-
-var estimated_background_color =  [ 'rgba(0, 137, 132, .2)' ];
-var estimated_border_color =  [ 'rgba(0, 10, 130, .7)' ];
-
-var labels = ["2016", "2017", "2018", "2019", "2020"];
-
 var s1a_total = document.getElementById("s1a_total").getContext('2d');
-var s1a_total_increase = document.getElementById("s1a_total_increase").getContext('2d');
 var s1a_monitoring = document.getElementById("s1a_monitoring").getContext('2d');
-var s1a_monitoring_increase = document.getElementById("s1a_monitoring_increase").getContext('2d');
 var s1a_terrorism = document.getElementById("s1a_terrorism").getContext('2d');
-var s1a_terrorism_increase = document.getElementById("s1a_terrorism_increase").getContext('2d');
 var s1a_estate = document.getElementById("s1a_estate").getContext('2d');
-var s1a_estate_increase = document.getElementById("s1a_estate_increase").getContext('2d');
 var s1a_ground = document.getElementById("s1a_ground").getContext('2d');
-var s1a_ground_increase = document.getElementById("s1a_ground_increase").getContext('2d');
 var s1a_general = document.getElementById("s1a_general").getContext('2d');
-var s1a_general_increase = document.getElementById("s1a_general_increase").getContext('2d');
 var s1a_reserves = document.getElementById("s1a_reserves").getContext('2d');
-var s1a_reserves_increase = document.getElementById("s1a_reserves_increase").getContext('2d');
 var s1a_management = document.getElementById("s1a_management").getContext('2d');
-var s1a_management_increase = document.getElementById("s1a_management_increase").getContext('2d');
 var s1a_account = document.getElementById("s1a_account").getContext('2d');
-var s1a_account_increase = document.getElementById("s1a_account_increase").getContext('2d');
 var s1a_audit = document.getElementById("s1a_audit").getContext('2d');
-var s1a_audit_increase = document.getElementById("s1a_audit_increase").getContext('2d');
 
 createLineChart(s1a_total, 		[35117, 41410, 43545, 46355, 47507], 	[41894, 44893, 46125, 0, 0]);
 createLineChart(s1a_monitoring, [918, 275, 470, 470, 826], 				[826, 706, 826, 0, 0]);
@@ -132,29 +146,13 @@ createLineChart(s1a_management, [24913, 25660, 26943, 28290, 29280],	[24913, 256
 createLineChart(s1a_account, 	[4626, 4812, 5004, 5000, 5200], 		[4626, 4859, 4857, 0, 0]);
 createLineChart(s1a_audit, 		[0, 638, 638, 755, 846], 				[604, 755, 846, 0, 0]);
 
-
-function  createLineChart(chart, estimated_data, total_data) {
-	new Chart(chart, {
-		type: 'line',
-		data: {
-			labels: labels,
-			datasets: [
-			{
-				label: "Total",
-				data: total_data,
-				backgroundColor: total_background_color,
-				borderColor: total_border_color,
-				borderWidth: border_width
-			},
-			{
-				label: "Estimated",
-				data: estimated_data,
-				backgroundColor: estimated_background_color,
-				borderColor: estimated_border_color,
-				borderWidth: border_width
-			}
-			]
-		},
-		options: { responsive: true }
-	});
-}
+var s1a_total_increase = document.getElementById("s1a_total_increase").getContext('2d');
+var s1a_monitoring_increase = document.getElementById("s1a_monitoring_increase").getContext('2d');
+var s1a_terrorism_increase = document.getElementById("s1a_terrorism_increase").getContext('2d');
+var s1a_estate_increase = document.getElementById("s1a_estate_increase").getContext('2d');
+var s1a_ground_increase = document.getElementById("s1a_ground_increase").getContext('2d');
+var s1a_general_increase = document.getElementById("s1a_general_increase").getContext('2d');
+var s1a_reserves_increase = document.getElementById("s1a_reserves_increase").getContext('2d');
+var s1a_management_increase = document.getElementById("s1a_management_increase").getContext('2d');
+var s1a_account_increase = document.getElementById("s1a_account_increase").getContext('2d');
+var s1a_audit_increase = document.getElementById("s1a_audit_increase").getContext('2d');
